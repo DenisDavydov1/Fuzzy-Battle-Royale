@@ -46,7 +46,6 @@ class Ball:
                 ball_top + self.ball_y_speed > PAD_W and \
                 ball_bot + self.ball_y_speed < HEIGHT - PAD_W:
             c.move(self.BALL, self.ball_x_speed, self.ball_y_speed)
-            #print("go")
 
         # if ball touches field boarder with its left or right sides
         elif ball_left - 15 <= PAD_W and ball_top - 10 > PAD_W and ball_bot + 10 < HEIGHT-PAD_W:
@@ -89,7 +88,7 @@ class Ball:
                  WIDTH / 2 + self.ball_radius / 2,
                  HEIGHT / 2 + self.ball_radius / 2)
         # set ball movement direction to loser with initial speed
-        self.ball_x_speed = random.choice([-5,-4,-3,3,4,5])  # -(self.ball_x_speed * -self.initial_speed) / abs(self.ball_x_speed)
+        self.ball_x_speed = random.choice([-5,-4,-3,3,4,5])
         self.ball_y_speed = random.choice([-5,-4,-3,3,4,5])
 
     # ball bounce function
@@ -206,14 +205,14 @@ def main():
     mamdani_move()
     sugeno_move()
     move_pads()
-    root.after(20, main)
+    root.after(10, main)
 
 
-# set focus on canvas for keyboard reaction
+# Set focus on canvas for keyboard reaction
 c.focus_set()
 
 
-##################################### DEFINE FUZZY CONTROLLER VARIABLES AND RULES ######################################
+########################### DEFINE FUZZY CONTROLLER VARIABLES AND RULES ###########################
 
 class FuzzyController:
     def __init__(self, controller):
@@ -245,7 +244,7 @@ class FuzzyController:
         self.contr_rules.add_rule(("RightFar", "and", "Close"), "RightSprint")
 
 
-############################################### CREATE FUZZY CONTROLLERS ###############################################
+#################################### CREATE FUZZY CONTROLLERS #####################################
 
 # MAMDANI (top)
 mamdani = FuzzyController(Mamdani)
@@ -265,7 +264,8 @@ def mamdani_move():
     if BALL.ball_y_speed < 0 and math.sqrt(coords[1]**2 + coords[0]**2) < \
             math.sqrt(coords1[1]**2 + coords1[0]**2):
         TOP_PAD_SPEED = get_speed(coords)
-    elif BALL1.ball_y_speed < 0 and math.sqrt(coords[1]**2 + coords[0]**2) > math.sqrt(coords1[1]**2 + coords1[0]**2):
+    elif BALL1.ball_y_speed < 0 and math.sqrt(coords[1]**2 + coords[0]**2) > \
+        math.sqrt(coords1[1]**2 + coords1[0]**2):
         TOP_PAD_SPEED = get_speed(coords1)
     elif BALL.ball_y_speed < 0 and coords[1] < coords1[1]:
         TOP_PAD_SPEED = get_speed(coords)
@@ -273,7 +273,7 @@ def mamdani_move():
         TOP_PAD_SPEED = get_speed(coords1)
 
 
-########################################################################################################################
+###################################################################################################
 
 # TSUKAMOTO (right)
 tsukamoto = FuzzyController(Tsukamoto)
@@ -303,7 +303,7 @@ def tsukamoto_move():
         RIGHT_PAD_SPEED = get_speed(coords1)
 
 
-########################################################################################################################
+###################################################################################################
 
 # LARSEN (bottom)
 larsen = FuzzyController(Larsen)
@@ -332,7 +332,7 @@ def larsen_move():
         BOTTOM_PAD_SPEED = get_speed(coords1)
 
 
-########################################################################################################################
+###################################################################################################
 
 # SUGENO (left)
 sugeno = FuzzyController(Sugeno)
@@ -361,7 +361,7 @@ def sugeno_move():
     else:
         LEFT_PAD_SPEED = get_speed(coords1)
 
-########################################################################################################################
+###################################################################################################
 
 
 # GAME PROCESS GLOBALS
@@ -424,8 +424,8 @@ def update_score(player):
         c.itemconfig(larsen_text, text=LARSEN_SCORE)
 
 
+#if __name__ == "main":
 # enable movement
 main()
-
 # enable window
 root.mainloop()

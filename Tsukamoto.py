@@ -1,8 +1,8 @@
 import math
 
-# Класс лингвистической переменной
+# Linguistic variable class
 class Variable:
-    # Инициализация новой переменной
+    # New variable initialization
     def __init__(self, name, terms, universum):
         self.name = name
         self.terms = terms
@@ -24,7 +24,7 @@ class Variable:
                 print("Term error: term points are not in ascending order")
                 raise SystemExit
 
-    # Описание вычисления функиций принадлежности
+    # Member function calculation description
     def mf(self, value):
         out = []
         for term in self.terms:
@@ -50,26 +50,26 @@ class Variable:
         return out
 
 
-# Класс формирования базы правил системы нечеткого вывода
+# Rule base forming class
 class Rule:
-    # Инициализация пустой базы правил
+    # Empty rule base initialization
     def __init__(self):
         self.rules = {}
 
-    # Метод добавления нового правила
+    # New rule addition method
     def add_rule(self, conditions, conclusions):
         self.rules[conditions] = conclusions
 
 
-# Методы нечеткой логики
+# Fuzzy logics methods
 class FuzzyMethods:
-    # Иннициализация пустых множеств, необходимых для совместной работы методов
+    # Initialization of empty sets needed for methods to work together
     def __init__(self):
         self.fuzz = {}
         self.aggr = {}
         self.activ = []
 
-    # Фаззификация входных переменных
+    # Input variables fuzzyfication
     def fuzzification(self, variables):  # variables = {var_1: val_1, var_2: val_2...}
         self.fuzz = {}
         for var in variables:
@@ -78,14 +78,14 @@ class FuzzyMethods:
                 self.fuzz[list(var.terms.keys())[i]] = mem_func[i]
         return self.fuzz
 
-    # Агрегирование подусловий
+    # Aggregating subconditions
     def aggregation(self, rules):  # rules = {...}
         self.aggr = {}
         for rule in rules:
             self.aggr[rules[rule]] = (min(self.fuzz[rule[0]], self.fuzz[rule[2]]))
         return self.aggr
 
-    # Активизация с помощью решения уравнений функций принадлежности
+    # Activation by solving equations of membership functions
     def activation(self, var):
         self.activ = []
         for conclusion in self.aggr:
@@ -93,24 +93,16 @@ class FuzzyMethods:
             if len(curr) == 4:
                 self.activ.append((self.aggr[conclusion], curr[1] - (1 - self.aggr[conclusion]) * (curr[1] - curr[0])))
                 self.activ.append((self.aggr[conclusion], curr[2] + (1 - self.aggr[conclusion]) * (curr[3] - curr[2])))
-                # self.activ[self.aggr[conclusion]] = curr[1] - (1 - self.aggr[conclusion]) * (curr[1] - curr[0])
-                # self.activ[self.aggr[conclusion]] = curr[2] + (1 - self.aggr[conclusion]) * (curr[3] - curr[2])
             elif len(curr) == 3:
                 self.activ.append((self.aggr[conclusion], curr[1] - (1 - self.aggr[conclusion]) * (curr[1] - curr[0])))
                 self.activ.append((self.aggr[conclusion], curr[1] + (1 - self.aggr[conclusion]) * (curr[2] - curr[1])))
-                # self.activ[self.aggr[conclusion]] = curr[1] - (1 - self.aggr[conclusion]) * (curr[1] - curr[0])
-                # self.activ[self.aggr[conclusion]] = curr[1] + (1 - self.aggr[conclusion]) * (curr[2] - curr[1])
             elif len(curr) == 2:
                 self.activ.append((self.aggr[conclusion], curr[0] + curr[1] * math.sqrt(-math.log(self.aggr[conclusion]))))
                 self.activ.append((self.aggr[conclusion], curr[0] - curr[1] * math.sqrt(-math.log(self.aggr[conclusion]))))
-                # self.activ[self.aggr[conclusion]] = curr[0] + curr[1] * math.sqrt(-math.log(self.aggr[conclusion]))
-                # self.activ[self.aggr[conclusion]] = curr[0] - curr[1] * math.sqrt(-math.log(self.aggr[conclusion]))
         return self.activ
 
-    # Дефаззифаикация
+    # Defuzzifaication
     def defuzzification(self):
-        # sum_c_w = sum([self.activ[c] * c for c in self.activ])
-        # sum_c = sum(list(self.activ.keys()))
         sum_c_w = sum([c[0] * c[1] for c in self.activ])
         sum_c = sum([c[0] for c in self.activ])
         return sum_c_w / sum_c

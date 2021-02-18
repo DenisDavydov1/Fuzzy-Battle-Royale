@@ -44,9 +44,8 @@ python3.8 FuzzyBattleRoyale.py
 
 <details>
   <summary>Spoiler alert! (Huge test results)</summary>
-  After handling 500 games to -10 score, winner had arrived - the Sugeno algorithm.
-  Mamndani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
-  ![Result plot](http://www.mandysam.com/img/random.jpg)
+  After handling 500 games to -10 score, winner has arrived - the Sugeno algorithm. Mamdani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
+  <img src=”http://www.mandysam.com/img/random.jpg”>
 </details>
 
 

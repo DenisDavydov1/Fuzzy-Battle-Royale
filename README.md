@@ -4,7 +4,7 @@ A Python based pong-styled game with fuzzy logics players.
 
 Main goal of this project is to find out which of four most popular fuzzy logics algorithms is best in the pong game: Mamdani, Sugeno, Tsukamoto or Larsen.
 
-![Game field](http://www.mandysam.com/img/random.jpg)
+![Game field](https://raw.githubusercontent.com/mandarin10101/Fuzzy-Battle-Royale/master/img/Gamefield.svg)
 
 All four algorithms are implemented from scratch and set up identically.
 
@@ -43,6 +43,6 @@ _____
   <summary>Spoiler alert! (Huge test results)</summary>
   After handling 500 games to -10 score, the winner has arrived - Sugeno algorithm. Mamdani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
    <blockquote class="spoiler">
-     <img alt="Hidden game field" src="http://www.mandysam.com/img/random.jpg"/>
+     <img alt="Hidden game field" src="https://raw.githubusercontent.com/mandarin10101/Fuzzy-Battle-Royale/master/img/ResultPlot.svg"/>
    </blockquote>
 </details>

@@ -6,7 +6,7 @@ Main goal of this project is to find out which of four most popular fuzzy logics
 
 ![Game field](https://raw.githubusercontent.com/mandarin10101/Fuzzy-Battle-Royale/master/img/Gamefield.svg)
 
-All four algorithms are implemented from scratch and set up identically.
+All four algorithms were implemented from scratch and set up identically.
 
 May the Best Win!
 

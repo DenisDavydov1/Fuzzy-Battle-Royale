@@ -32,26 +32,17 @@ Requirements:
    sudo apt-get install python3-tk
    ```
 
-
-
 How to run:
 
 ```bash
 python3.8 FuzzyBattleRoyale.py
 ```
 
-
-
+_____
 <details>
   <summary>Spoiler alert! (Huge test results)</summary>
-  After handling 500 games to -10 score, winner has arrived - the Sugeno algorithm. Mamdani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
-    Before spoiler.
-    <blockquote class="spoiler">
-      <p>Before image</p>
-      <img alt="So hidden image!" src="http://www.mandysam.com/img/random.jpg"/>
-      <p>After image.</p>
-    </blockquote>
-    After spoiler.
+  After handling 500 games to -10 score, the winner has arrived - Sugeno algorithm. Mamdani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
+   <blockquote class="spoiler">
+     <img alt="Hidden game field" src="http://www.mandysam.com/img/random.jpg"/>
+   </blockquote>
 </details>
-
-

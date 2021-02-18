@@ -1,11 +1,11 @@
 from tkinter import *
-import base
+import random
+import math
+
 import Mamdani
 import Tsukamoto
 import Larsen
 import Sugeno
-import random
-import math
 
 # GLOBAL VARIABLES
 # global field size

@@ -45,7 +45,28 @@ python3.8 FuzzyBattleRoyale.py
 <details>
   <summary>Spoiler alert! (Huge test results)</summary>
   After handling 500 games to -10 score, winner has arrived - the Sugeno algorithm. Mamdani is 2nd, Larsen and Tsukamoto are 3rd and 4th.
-  <img src=”http://www.mandysam.com/img/random.jpg”>
+   <title>Spoiler</title>
+    <style type="text/css">
+      blockquote.spoiler {
+        background-color : rgb(238,238,238);
+        padding : 10pt 10pt 1pt 10pt;
+      }
+      blockquote.spoiler * {
+        opacity : 0;
+      }
+      blockquote.spoiler:hover * {
+        opacity : 1;
+      }
+    </style>
+  </head>
+  <body>
+    Before spoiler.
+    <blockquote class="spoiler">
+      <p>Before image</p>
+      <img alt="So hidden image!" src="http://www.mandysam.com/img/random.jpg"/>
+      <p>After image.</p>
+    </blockquote>
+    After spoiler.
 </details>
 
 
